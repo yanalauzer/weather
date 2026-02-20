@@ -81,7 +81,48 @@
           </div>
         </div>
       </div>
+      <!-- мини‑блок с «сегодня»  -->
+      <div class="search-summary">
+        <p class="search-summary__label">Сегодня</p>
+        <p class="search-summary__value" id="search-summary-temp">--°C</p>
+        <p class="search-summary__city" id="search-summary-city">Город не выбран</p>
+      </div>
+    </section>
 
+    <!-- блок текущей погоды -->
+    <section class="panel panel--current" aria-live="polite">
+      <header class="panel__header">
+        <h2 class="panel__title" id="current-city">Выберите город</h2>
+        <p class="panel__meta" id="current-updated"></p>
+      </header>
+
+      <div class="current-main">
+        <div class="current-main__left">
+          <p class="current-main__temp" id="current-temp">--°C</p>
+          <p class="current-main__desc" id="current-desc">Нет данных</p>
+          <p class="current-main__feels" id="current-feels">Ощущается как: --°C</p>
+        </div>
+      </div>
+
+      <dl class="current-details">
+        <div class="current-details__item">
+          <dt>Влажность</dt>
+          <dd id="current-humidity">--%</dd>
+        </div>
+        <div class="current-details__item">
+          <dt>Ветер</dt>
+          <dd id="current-wind">-- м/с</dd>
+        </div>
+        <div class="current-details__item">
+          <dt>Давление</dt>
+          <dd id="current-pressure">-- гПа</dd>
+        </div>
+        <div class="current-details__item">
+          <dt>Видимость</dt>
+          <dd id="current-visibility">-- км</dd>
+        </div>
+      </dl>
+    </section>
 
   <script src="script.js"></script>
 </body>
