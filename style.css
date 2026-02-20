@@ -1,0 +1,551 @@
+:root {
+  --color-bg: #050014;
+  --color-surface: #120725;
+  --color-surface-soft: #1a0b32;
+  --color-accent: #a855f7;
+  --color-accent-soft: #c4a0ff;
+  --color-text: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-error-bg: #7f1d1d;
+  --color-error-border: #fca5a5;
+
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+
+  --container-width: 780px;
+
+  --transition-fast: 0.15s ease-out;
+}
+
+/* базовый стиль */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* вертикальная колонка */
+.app {
+  min-height: 100vh;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* верхняя панель */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-bottom: var(--space-2);
+}
+
+.app-header__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.app-header__subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* панель‑карточка */
+.panel {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: var(--shadow);
+  padding: var(--space-5);
+}
+
+/* панель поиска чуть ниже по контрасту */
+.panel--search {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+  gap: var(--space-4);
+  background-color: var(--color-surface-soft);
+}
+
+/* внутри панели поиска */
+.search__label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.search__row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search__input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background-color: #090015;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search__input:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.search__button {
+  padding: 0 var(--space-4);
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-accent);
+  color: #fdf2ff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.search__button:hover {
+  background-color: #9333ea;
+  transform: translateY(-1px);
+}
+
+/* подсказки */
+.search__suggestions {
+  margin-top: var(--space-2);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background-color: #090015;
+  max-height: 220px;
+  overflow: auto;
+  display: none;
+}
+
+.search__suggestions--visible {
+  display: block;
+}
+
+.search__suggestions-item {
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.search__suggestions-item:hover {
+  background-color: var(--color-surface-soft);
+}
+
+/* мини‑резюме справа от поиска */
+.search-summary {
+  align-self: center;
+  text-align: right;
+}
+
+.search-summary__label {
+  margin: 0 0 var(--space-1);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.search-summary__value {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.search-summary__city {
+  margin: var(--space-1) 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* общий заголовок панели */
+.panel__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel__meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.panel__meta--muted {
+  opacity: 0.8;
+}
+
+/* extras */
+.panel--extras {
+  background-color: var(--color-surface-soft);
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.extras-panel {
+  padding: var(--space-4);
+  position: relative;
+}
+
+.extras-panel::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: var(--space-5);
+  width: 3px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+}
+
+/* текущая погода */
+.panel--current {
+  position: relative;
+}
+
+.panel--current::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: var(--space-5);
+  width: 3px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+}
+
+.current-main {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.current-main__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.current-main__temp {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+.current-main__desc {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.current-main__feels {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.current-main__icon {
+  font-size: 3rem;
+}
+
+/* детали */
+.current-details {
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: #0b021c;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.current-details__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.current-details__item dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.current-details__item dd {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* прогноз */
+.panel--forecast {
+  background-color: var(--color-surface-soft);
+}
+
+.forecast-list {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+
+.forecast-item {
+  min-width: 120px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: #0b021c;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.forecast-item__date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.forecast-item__icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-1);
+}
+
+.forecast-item__temp {
+  font-weight: 600;
+}
+
+/* ошибки */
+.app-error {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  font-size: 0.9rem;
+  display: none;
+}
+
+.app-error--visible {
+  display: block;
+}
+
+/* загрузка */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(5, 0, 20, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 50;
+}
+
+.app-loader--visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.app-loader__spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 3px solid rgba(148, 163, 184, 0.4);
+  border-top-color: var(--color-accent);
+  animation: spin 0.8s linear infinite;
+}
+
+/* кнопка обновить */
+.search-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.refresh-button {
+  padding: 0 var(--space-4);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.refresh-button:not(:disabled):hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* Алиасы: старые классы -> новые стили */
+.panelheader { 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.paneltitle { 
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panelmeta { 
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.panelmeta--muted { 
+  opacity: 0.8;
+}
+
+/* current-main */
+.current-mainleft { 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.current-maintemp { 
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+.current-maindesc { 
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.current-mainfeels { 
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* details */
+.current-detailsitem { 
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.current-detailsitem dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.current-detailsitem dd {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.forecast-itemdate { 
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.forecast-itemtemp { 
+  font-weight: 600;
+}
+
+.panel--search > * {
+  min-width: 0;
+}
+
+.searchinput,
+.searchinput--extra {
+  min-width: 0;
+}
+
+.search__extras {
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+@media (max-width: 720px) {
+  .search__extras {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search__extra {
+    width: 100%;
+    flex-wrap: wrap;         
+  }
+
+  .searchinput--extra {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .searchbutton--extra {
+    width: 100%;              
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
