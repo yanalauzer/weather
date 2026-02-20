@@ -124,6 +124,26 @@
       </dl>
     </section>
 
+    <!-- блок прогноза -->
+    <section class="panel panel--forecast">
+      <header class="panel__header">
+        <h2 class="panel__title">Прогноз на 5 дней</h2>
+      </header>
+      <div class="forecast-list" id="forecast-list"></div>
+    </section>
+
+    <!-- блок доп.городов  -->
+    <section class="panel extras-panel" id="extra-panel-1" aria-live="polite"></section>
+    <section class="panel extras-panel" id="extra-panel-2" aria-live="polite"></section>
+
+    <div class="app-error" id="app-error" aria-live="polite"></div>
+
+    <!-- оверлей загрузки -->
+    <div class="app-loader" id="app-loader" aria-hidden="true">
+      <div class="app-loader__spinner"></div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
