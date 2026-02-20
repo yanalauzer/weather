@@ -32,6 +32,24 @@
 
         <div class="search__suggestions" id="search-suggestions"></div>
 
+ <!-- блок поиска -->
+    <section class="panel panel--search">
+      <!-- поиск города -->
+      <div class="search">
+        <div class="search__row">
+          <input
+            id="city-input"
+            class="search__input"
+            type="text"
+            placeholder="Начните вводить город..."
+            autocomplete="off"
+          />
+          <button class="search__button" type="button" id="search-button">Найти</button>
+          <button class="refresh-button" type="button" id="refresh-button" disabled>Обновить</button>
+        </div>
+
+        <div class="search__suggestions" id="search-suggestions"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
